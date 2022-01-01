@@ -1,0 +1,104 @@
+* {
+    box-sizing:border-box;
+}
+body {
+    margin:0;
+    padding:0;
+    font-family:helvetica, sans-serif;
+}
+
+header > button {
+    background:none;
+    border:none;
+    margin-right:10px;
+}
+header > button > img {
+    width:50px;
+    vertical-align:middle;
+}
+header {
+    text-align:right;
+    padding:10px 10px 0 0;
+}
+#alert-text {
+    display:inline;
+    font-size:24px;
+}
+
+/*//////////////////NOTES AREA////////////////*/
+
+#note-container {
+    margin:100px 0 100px;
+    display:flex;
+    position:relative;
+}
+#notes {
+    width:100vw;
+    height:200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    position:relative;
+}
+#treble-clef {
+    height:145%;
+    top:50%;
+    transform:translateY(-50%);
+    position:absolute;
+    z-index:1;
+}
+#bass-clef {
+    height:60%;
+    transform:translateY(23%);
+    position:absolute;
+    left:3%;
+    z-index:1;
+}
+.note {
+    background-color:black;
+    border-radius:50%;
+    width:25px;
+    height:20px;
+    position:absolute;
+    transform:translateY(-50%) rotate(-0.07turn);
+    left:50%;
+}
+.note-line {
+    height:1px;
+    background-color:black;
+    position:relative;
+}
+.note-line-white {
+    background-color:white  ;
+}
+
+/*//////////////////USER INPUT////////////////*/
+
+#answers>button {
+    font-size:64px;
+    margin:0 10px 5px 10px;
+    border-radius:30px;
+    border:none;
+    padding:2px 7px 2px 7px;
+    transition:0.2s;
+}
+
+#answers {
+    text-align:center;
+}
+
+.btn-answer {
+    display:none;
+}
+.btn-answer:hover, #begin-training:hover {
+    transform:scale(1.1);
+}
+
+@media screen and (max-width:500px) {
+    #treble-clef {
+        left:-7%;
+    }
+    #alert-text {
+        font-size:16px;
+    }
+}
