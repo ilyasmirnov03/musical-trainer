@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import './trainer.css';
-import { Note, notes } from '../../constants/notes.const';
+import { notes } from '../../constants/notes.const';
+import { Note } from '../../models/notes/notes.interface';
+import NotePartition from './note-partition/note-partition';
 
+/**
+ * Training application container.
+ * Handles user guess and random note selection logic.
+ * @returns
+ */
 export default function Trainer() {
   const [currentNote, setCurrentNote] = useState<Note | null>(null);
-  const [userGuess, setUserGuess] = useState<Note | null>(null);
+  const [correctGuesses, setCorrectGuesses] = useState<number>(0);
 
   /**
    * Return a random note from the notes array.
-   * @returns 
+   * @returns
    */
-  const generateRandomNote = () => {
+  const generateRandomNote = (): Note => {
     let randomIndex = Math.floor(Math.random() * notes.length);
     // Prevent same note generation
     while (notes[randomIndex] === currentNote) {
@@ -24,11 +31,10 @@ export default function Trainer() {
    * @event click
    * @param note 
    */
-  const handleNoteButtonClick = (note: Note) => {
-    setUserGuess(note);
-    if (userGuess === currentNote) {
-      setUserGuess(null);
+  const handleNoteGuess = (note: Note) => {
+    if (note.name === currentNote?.name) {
       setCurrentNote(generateRandomNote());
+      setCorrectGuesses((guesses) => guesses + 1);
     }
   };
 
@@ -39,24 +45,15 @@ export default function Trainer() {
 
   return (
     <>
-      <section className="partition">
-        <div className={`note ${currentNote}`} />
-        <div className="lines">
-          <div className="line" />
-          <div className="line" />
-          <div className="line" />
-          <div className="line" />
-          <div className="line" />
-        </div>
-      </section>
-      <p>Guess the note:</p>
+      <NotePartition note={currentNote}></NotePartition>
+      <p>Guess the note: <span>{correctGuesses}</span></p>
       <div>
         {notes.map((note) => (
           <button
-            key={note}
-            onClick={() => handleNoteButtonClick(note)}
+            key={note.name}
+            onClick={() => handleNoteGuess(note)}
           >
-            {note}
+            {note.name}
           </button>
         ))}
       </div>
