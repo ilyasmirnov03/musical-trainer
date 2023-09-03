@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Main from './components/main/main.tsx';
 import Trainer from './components/trainer/trainer.tsx';
 import App from './components/app.tsx';
+import './reset.css';
 
 const router = createBrowserRouter([
   {
