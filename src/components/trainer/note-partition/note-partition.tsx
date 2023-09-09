@@ -1,11 +1,20 @@
 import { useEffect, useRef } from 'react';
 import { Note } from '../../../models/notes/notes.interface';
+import {KeyType} from '../../../models/types/key.type.ts';
+
+/**
+ * Note partition component props interface
+ */
+interface NotePartitionProps {
+  note: Note | null,
+  currentKey: KeyType
+}
 
 /**
  * The note partition. Handles note drawing logic.
  * @returns
  */
-export default function NotePartition(props: {note: Note | null}) {
+export default function NotePartition({note, currentKey}: NotePartitionProps) {
   /**
    * Reference to canvas HTML element
    */
@@ -37,12 +46,12 @@ export default function NotePartition(props: {note: Note | null}) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     // Draw lines and current note
     drawLines(context);
-    drawNote(context, props.note, partitionHeight);
-  }, [props.note, partitionHeight]);
+    drawNote(context, note, partitionHeight, currentKey);
+  }, [note, currentKey]);
 
   /**
    * Draw lines of the partition
-   * @param context 
+   * @param context
    */
   const drawLines = (context: CanvasRenderingContext2D): void => {
     for (let i = 0; i < 5; i++) {
@@ -55,13 +64,19 @@ export default function NotePartition(props: {note: Note | null}) {
 
   /**
    * Draw the provided note on the provided context
-   * @param context 
-   * @param note 
+   * @param context
+   * @param note
    * @param height
+   * @param currentKey
    */
-  const drawNote = (context: CanvasRenderingContext2D, note: Note | null, height: number): void => {
+  const drawNote = (
+      context: CanvasRenderingContext2D,
+      note: Note | null,
+      height: number,
+      currentKey: KeyType
+  ): void => {
     if (note != null) {
-      const notePosition = height - (note.altPosition * 25);
+      const notePosition = height - (note.position[currentKey] * 25);
       context.beginPath();
       context.arc(20, notePosition, 12.5, 0, 2 * Math.PI);
       context.fill();

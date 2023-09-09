@@ -1,4 +1,4 @@
-import { Note } from "../models/notes/notes.interface";
+import {Note} from '../models/notes/notes.interface';
 
 /**
  * The notes array
@@ -6,37 +6,51 @@ import { Note } from "../models/notes/notes.interface";
 export const notes: readonly Note[] = [
     {
         name: 'do',
-        altPosition: -2,
-        bassPosition: 3
+        position: {
+            alt: -2,
+            bass: 3,
+        }
     },
     {
         name: 're',
-        altPosition: -1,
-        bassPosition: 4
+        position: {
+            alt: -1,
+            bass: 4
+        }
     },
     {
         name: 'mi',
-        altPosition: 0,
-        bassPosition: 5
+        position: {
+            alt: 0,
+            bass: 5
+        }
     },
     {
         name: 'fa',
-        altPosition: 1,
-        bassPosition: 6
+        position: {
+            alt: 1,
+            bass: 6
+        }
     },
     {
         name: 'sol',
-        altPosition: 2,
-        bassPosition: 7
+        position: {
+            alt: 2,
+            bass: 7
+        }
     },
     {
         name: 'la',
-        altPosition: 3,
-        bassPosition: 8
+        position: {
+            alt: 3,
+            bass: 8
+        }
     },
     {
         name: 'si',
-        altPosition: 4,
-        bassPosition: 9
+        position: {
+            alt: 4,
+            bass: 9
+        }
     }
 ] as const;
