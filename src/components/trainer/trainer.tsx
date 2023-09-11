@@ -13,7 +13,7 @@ import {KeyType} from '../../models/types/key.type.ts';
 export default function Trainer() {
   const [currentNote, setCurrentNote] = useState<Note | null>(null);
   const [correctGuesses, setCorrectGuesses] = useState<number>(0);
-  const [currentKey, setCurrentKey] = useState<KeyType>("alt");
+  const [currentKey, setCurrentKey] = useState<KeyType>('treble');
 
   /**
    * Return a random note from the notes array.
@@ -46,7 +46,7 @@ export default function Trainer() {
    */
   const changeKey = () => {
     setCorrectGuesses(0);
-    currentKey === 'alt' ? setCurrentKey("bass") : setCurrentKey('alt');
+    currentKey === 'treble' ? setCurrentKey("bass") : setCurrentKey('treble');
   };
 
   // Initial setup
