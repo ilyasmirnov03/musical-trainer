@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Note } from '../../../models/notes/notes.interface';
 import {KeyType} from '../../../models/types/key.type.ts';
+import {NUMBERS} from '../../../constants/numbers.const.ts';
 
 /**
  * Note partition component props interface
@@ -22,7 +23,7 @@ export default function NotePartition({note, currentKey}: NotePartitionProps) {
   /**
    * Height calculated from current number of chosen octaves
    */
-  const height = 7 * 50;
+  const height = 7 * NUMBERS.DISTANCE_BETWEEN_LINES;
   /**
    * Total partition height
    */
@@ -56,8 +57,8 @@ export default function NotePartition({note, currentKey}: NotePartitionProps) {
   const drawLines = (context: CanvasRenderingContext2D): void => {
     for (let i = 0; i < 5; i++) {
       context.beginPath();
-      context.moveTo(10, i * 50);
-      context.lineTo(500, i * 50);
+      context.moveTo(10, i * NUMBERS.DISTANCE_BETWEEN_LINES);
+      context.lineTo(500, i * NUMBERS.DISTANCE_BETWEEN_LINES);
       context.stroke();
     }
   }
@@ -76,9 +77,9 @@ export default function NotePartition({note, currentKey}: NotePartitionProps) {
       currentKey: KeyType
   ): void => {
     if (note != null) {
-      const notePosition = height - (note.position[currentKey] * 25);
+      const notePosition = height - (note.position[currentKey] * NUMBERS.DISTANCE_BETWEEN_NOTES);
       context.beginPath();
-      context.arc(20, notePosition, 12.5, 0, 2 * Math.PI);
+      context.arc(20, notePosition, NUMBERS.DISTANCE_BETWEEN_NOTES / 2, 0, 2 * Math.PI);
       context.fill();
       context.stroke();
     }
