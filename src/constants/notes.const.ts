@@ -7,49 +7,49 @@ export const notes: readonly Note[] = [
     {
         name: 'do',
         position: {
-            alt: -2,
+            treble: -2,
             bass: 3,
         }
     },
     {
         name: 're',
         position: {
-            alt: -1,
+            treble: -1,
             bass: 4
         }
     },
     {
         name: 'mi',
         position: {
-            alt: 0,
+            treble: 0,
             bass: 5
         }
     },
     {
         name: 'fa',
         position: {
-            alt: 1,
+            treble: 1,
             bass: 6
         }
     },
     {
         name: 'sol',
         position: {
-            alt: 2,
+            treble: 2,
             bass: 7
         }
     },
     {
         name: 'la',
         position: {
-            alt: 3,
+            treble: 3,
             bass: 8
         }
     },
     {
         name: 'si',
         position: {
-            alt: 4,
+            treble: 4,
             bass: 9
         }
     }

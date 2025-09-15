@@ -3,7 +3,7 @@ import './trainer.css';
 import { notes } from '../../constants/notes.const';
 import { Note } from '../../models/notes/notes.interface';
 import NotePartition from './note-partition/note-partition';
-import {KeyType} from '../../models/types/key.type.ts';
+import { KeyType } from '../../models/types/key.type.ts';
 
 /**
  * Training application container.
@@ -13,7 +13,7 @@ import {KeyType} from '../../models/types/key.type.ts';
 export default function Trainer() {
   const [currentNote, setCurrentNote] = useState<Note | null>(null);
   const [correctGuesses, setCorrectGuesses] = useState<number>(0);
-  const [currentKey, setCurrentKey] = useState<KeyType>("alt");
+  const [currentKey, setCurrentKey] = useState<KeyType>('treble');
 
   /**
    * Return a random note from the notes array.
@@ -46,7 +46,7 @@ export default function Trainer() {
    */
   const changeKey = () => {
     setCorrectGuesses(0);
-    currentKey === 'alt' ? setCurrentKey("bass") : setCurrentKey('alt');
+    currentKey === 'treble' ? setCurrentKey("bass") : setCurrentKey('treble');
   };
 
   // Initial setup
@@ -57,7 +57,7 @@ export default function Trainer() {
   return (
     <>
       <button onClick={changeKey}>{currentKey}</button>
-      <NotePartition note={currentNote} currentKey={currentKey}></NotePartition>
+      <NotePartition></NotePartition>
       <p>Guess the note: <span>{correctGuesses}</span></p>
       <div>
         {notes.map((note) => (

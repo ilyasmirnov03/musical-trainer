@@ -1,4 +1,4 @@
 /**
  * Supported keys
  */
-export type KeyType = "alt" | "bass";
+export type KeyType = "treble" | "bass";
