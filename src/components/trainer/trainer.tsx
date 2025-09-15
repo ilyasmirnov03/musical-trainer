@@ -3,7 +3,7 @@ import './trainer.css';
 import { notes } from '../../constants/notes.const';
 import { Note } from '../../models/notes/notes.interface';
 import NotePartition from './note-partition/note-partition';
-import {KeyType} from '../../models/types/key.type.ts';
+import { KeyType } from '../../models/types/key.type.ts';
 
 /**
  * Training application container.
@@ -57,7 +57,7 @@ export default function Trainer() {
   return (
     <>
       <button onClick={changeKey}>{currentKey}</button>
-      <NotePartition note={currentNote} currentKey={currentKey}></NotePartition>
+      <NotePartition></NotePartition>
       <p>Guess the note: <span>{correctGuesses}</span></p>
       <div>
         {notes.map((note) => (
